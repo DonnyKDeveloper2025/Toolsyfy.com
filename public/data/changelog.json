@@ -1,0 +1,35 @@
+
+[
+    {
+        "id": "c4d5e6f7-a8b9-0123-4567-890abcdef123",
+        "version": "1.2.0",
+        "date": "2024-10-28",
+        "changes": [
+            "Implemented a global, persistent Dark/Light/Auto theme system.",
+            "Theme choice is now synchronized across the React app and all static tool pages.",
+            "Eliminated 'Flash of Unstyled Content' (FOUC) on page load.",
+            "Upgraded theme toggle to a dropdown for explicit theme selection (Light/Dark/Auto)."
+        ]
+    },
+    {
+        "id": "b0f7e9a8-c1d2-4b5f-8c9d-0e1f2a3b4c5d",
+        "version": "1.1.0",
+        "date": "2024-10-27",
+        "changes": [
+            "Implemented User Accounts with Firebase for syncing favorites.",
+            "Upgraded Feedback Modal with structured categories.",
+            "Added a dynamic Announcement Banner managed from the admin panel.",
+            "Fixed a bug in the Admin Panel's suggestion status handler."
+        ]
+    },
+    {
+        "id": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+        "version": "1.0.0",
+        "date": "2024-10-26",
+        "changes": [
+            "Initial public release of Toolsyfy.",
+            "Launched with 539 free online tools.",
+            "Core features: Tool directory, search, favorites, and dark mode."
+        ]
+    }
+]

@@ -1,0 +1,32 @@
+
+{
+  "siteName": "Toolsyfy - The Ultimate Tool Hub",
+  "tagline": "Discover free online tools to make your life easier",
+  "defaultMeta": {
+    "title": "Toolsyfy - Free Online Tools for Developers, Marketers, and Creators",
+    "description": "Explore over 539 free, no-backend online tools for productivity, web development, content creation, social media, and more. No sign-ups required.",
+    "keywords": "tools, online tools, free tools, productivity, developer tools, content creation"
+  },
+  "settings": {
+    "theme": "auto",
+    "adsEnabled": true,
+    "analyticsEnabled": true
+  },
+  "announcementBanner": {
+    "text": "Welcome! We've just added 10 new AI tools. Check them out!",
+    "enabled": false
+  },
+  "menu": [
+    { "label": "Home", "link": "/" },
+    { "label": "About Us", "link": "/#about" },
+    { "label": "Contact Us", "link": "/#contact" },
+    { "label": "Privacy Policy", "link": "/#privacy" },
+    { "label": "Terms of Service", "link": "/#terms" }
+  ],
+  "social": [
+    { "icon": "youtube", "link": "https://youtube.com/toolsyfy" },
+    { "icon": "linkedin", "link": "https://linkedin.com/company/toolsyfy" },
+    { "icon": "twitter", "link": "https://x.com/toolsyfy" },
+    { "icon": "instagram", "link": "https://instagram.com/toolsyfy" }
+  ]
+}

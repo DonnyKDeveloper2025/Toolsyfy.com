@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Color Palette Generator - Toolsyfy</title>
+  <meta name="description" content="Create stunning color palettes instantly. Generate color schemes like complementary, analogous, and triadic from a single color. Perfect for designers and developers." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+<body style="visibility: hidden;">
+  <div id="site-header" data-shared="universal-header.html"></div>
+  <div id="site-toolbar" data-shared="universal-toolbar.html"></div>
+
+  <main id="tool-root" class="min-h-screen flex flex-col items-center p-4 sm:p-6 md:p-8">
+        <div class="w-full max-w-2xl mx-auto">
+            <div class="text-center mb-8">
+                 <h1 id="tool-title" class="text-3xl sm:text-4xl font-bold text-foreground"></h1>
+                 <p id="tool-description" class="text-lg text-muted mt-2"></p>
+            </div>
+
+            <div class="bg-card shadow-lg rounded-xl p-6 sm:p-8">
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4">
+                        <label for="color-picker" class="block text-sm font-medium text-muted">Base Color:</label>
+                        <input type="color" id="color-picker" class="h-10 w-12 p-1 border-none rounded-md cursor-pointer" value="#00D1FF">
+                        <input type="text" id="hex-input" class="w-full p-2 border border-border rounded-md bg-background" value="#00D1FF">
+                    </div>
+                    <button id="generate-btn" class="w-full flex items-center justify-center gap-2 bg-brand-primary text-white font-bold py-3 px-4 rounded-md hover:bg-brand-secondary">
+                        <i data-lucide="palette" class="h-5 w-5"></i>
+                        <span>Generate Palette</span>
+                    </button>
+                    <div id="palette-output" class="mt-4 grid grid-cols-2 sm:grid-cols-5 gap-2">
+                        <p class="text-muted col-span-full text-center py-10">Your color palette will appear here.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+  
+  <div id="site-footer" data-shared="universal-footer.html"></div>
+  
+  <script src="../shared/shared-injector.js" defer></script>
+  <script src="./tool.js" defer></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', async () => {
+      if (window.__SHARED_INJECTED__) await window.__SHARED_INJECTED__;
+      if (typeof initTool === 'function') {
+        initTool();
+      } else {
+        console.error('Tool initialization function (initTool) not found in tool.js');
+      }
+    });
+  </script>
+</body>
+</html>

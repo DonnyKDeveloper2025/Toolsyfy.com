@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>New Tool | Toolsyfy</title>
+  <meta name="description" content="A new awesome tool from Toolsyfy." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="preload" href="https://rsms.me/inter/inter.css" as="style">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://rsms.me/inter/inter.css"></noscript>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="/styles.css">
+  
+  <script src="/shared/shared-injector.js" defer></script>
+  <script src="./tool.js" defer></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', async () => {
+      // Wait for shared components (header/footer) to be injected
+      if (window.__SHARED_INJECTED__) await window.__SHARED_INJECTED__;
+      
+      // Initialize tool-specific logic
+      if (typeof initTool === 'function') {
+        initTool();
+      } else {
+        console.error('Tool initialization function (initTool) not found in tool.js');
+      }
+    });
+  </script>
+</head>
+<body style="visibility: hidden;">
+  <header id="universal-header"></header>
+
+  <main id="tool-root" class="min-h-screen flex flex-col items-center p-4 sm:p-6 md:p-8">
+    <div class="w-full max-w-2xl mx-auto">
+        <div class="text-center mb-8">
+             <h1 id="tool-title" class="text-3xl sm:text-4xl font-bold text-foreground">New Tool</h1>
+             <p id="tool-description" class="text-lg text-muted mt-2">A new awesome tool from Toolsyfy.</p>
+        </div>
+        
+        <div id="tool-interface" class="bg-card shadow-lg rounded-xl p-6 sm:p-8">
+            <!-- TODO: Add your tool's UI elements here -->
+            <p class="text-center text-muted">Tool interface placeholder. Edit <code>index.html</code> and <code>tool.js</code> to build your tool.</p>
+        </div>
+    </div>
+  </main>
+  
+  <footer id="universal-footer"></footer>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Content Idea Generator - Toolsyfy</title>
+  <meta name="description" content="Generate creative content ideas, headlines, and outlines for your blog or social media using AI." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="stylesheet" href="../../styles.css" />
+
+  <!-- Note: 3rd party scripts like tailwind, lucide, inter are now loaded by the shared injector or main app -->
+</head>
+<body style="visibility: hidden;">
+  <div id="site-header" data-shared="universal-header.html"></div>
+  <div id="site-toolbar" data-shared="universal-toolbar.html"></div>
+  
+  <main id="tool-root" class="min-h-screen flex flex-col items-center p-4 sm:p-6 md:p-8">
+        <div class="w-full max-w-2xl mx-auto">
+            <div class="text-center mb-8">
+                 <h1 id="tool-title" class="text-3xl sm:text-4xl font-bold text-foreground"></h1>
+                 <p id="tool-description" class="text-lg text-muted mt-2"></p>
+            </div>
+
+            <div class="bg-card shadow-lg rounded-xl p-6 sm:p-8">
+                <div class="space-y-4">
+                    <div>
+                        <label for="topic-input" class="block text-sm font-medium text-muted mb-1">Enter a Topic</label>
+                        <input type="text" id="topic-input" class="w-full p-2 border border-border rounded-md focus:ring-brand-primary focus:border-brand-primary bg-background" placeholder="e.g., healthy breakfast recipes">
+                    </div>
+                     <div>
+                        <label for="content-type-select" class="block text-sm font-medium text-muted mb-1">Select Content Type</label>
+                        <select id="content-type-select" class="w-full p-2 border border-border rounded-md focus:ring-brand-primary focus:border-brand-primary bg-card">
+                            <option value="Blog Post Titles">Blog Post Titles</option>
+                            <option value="YouTube Video Ideas">YouTube Video Ideas</option>
+                            <option value="Tweet Thread Hooks">Tweet Thread Hooks</option>
+                            <option value="Instagram Captions">Instagram Captions</option>
+                        </select>
+                    </div>
+
+                    <button id="generate-btn" class="w-full flex items-center justify-center gap-2 bg-brand-primary text-white font-bold py-3 px-4 rounded-md hover:bg-brand-secondary transition-colors disabled:bg-slate-400 disabled:cursor-not-allowed">
+                        <i data-lucide="lightbulb" class="h-5 w-5"></i>
+                        <span>Generate Ideas</span>
+                    </button>
+                    
+                    <div class="relative">
+                        <label for="result-output" class="block text-sm font-medium text-muted mb-1">AI Generated Ideas</label>
+                        <textarea id="result-output" rows="8" readonly class="w-full p-3 border border-border rounded-md bg-secondary" placeholder="Your creative ideas will appear here..."></textarea>
+                        <button id="copy-btn" class="absolute top-8 right-2 bg-slate-600 text-white text-xs font-bold py-1 px-3 rounded-md hover:bg-slate-700 transition-colors hidden">Copy</button>
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                </div>
+            </div>
+        </div>
+    </main>
+  
+  <div id="site-footer" data-shared="universal-footer.html"></div>
+
+  <script src="../shared/shared-injector.js" defer></script>
+  <script src="./tool.js" defer></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', async () => {
+      if (window.__SHARED_INJECTED__) await window.__SHARED_INJECTED__;
+      if (typeof initTool === 'function') {
+        initTool();
+      } else {
+        console.error('Tool initialization function (initTool) not found in tool.js');
+      }
+    });
+  </script>
+</body>
+</html>

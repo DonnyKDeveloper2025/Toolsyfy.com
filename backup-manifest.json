@@ -1,0 +1,23 @@
+{
+  "backups": [
+    {
+      "original_path": "index.html",
+      "backup_path": "backups/index.html.bak",
+      "timestamp": "PLACEHOLDER_TIMESTAMP",
+      "sha256": "PLACEHOLDER_SHA256"
+    },
+    {
+      "original_path": "vite.config.ts",
+      "backup_path": "backups/vite.config.ts.bak",
+      "timestamp": "PLACEHOLDER_TIMESTAMP",
+      "sha256": "PLACEHOLDER_SHA256"
+    },
+    {
+      "original_path": "src/index.tsx",
+      "backup_path": "backups/src/index.tsx.bak",
+      "timestamp": "PLACEHOLDER_TIMESTAMP",
+      "sha256": "PLACEHOLDER_SHA256"
+    }
+  ],
+  "note": "This file is for record-keeping. Hashes and timestamps are placeholders as filesystem operations are not performed."
+}

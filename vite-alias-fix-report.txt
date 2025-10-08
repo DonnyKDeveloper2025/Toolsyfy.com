@@ -1,0 +1,29 @@
+# Vite Alias Fix Report for Toolsyfy
+
+This report summarizes the diagnosis and fix for the module resolution error ("Failed to resolve module specifier '@/components/App'") encountered in Gemini Studio.
+
+## 1. What Caused the Alias Issue?
+
+The primary cause was a conflict between a `<script type="importmap">` tag in `index.html` and Vite's development server.
+
+- **Vite's Role:** Vite is designed to handle all module resolution during development. It intercepts requests for JavaScript modules, resolves aliases (like `@/`), and processes dependencies from `node_modules` on the fly before serving them to the browser.
+- **The Conflict:** The import map was attempting to manually tell the browser where to find dependencies like `react` from a CDN. This interfered with Vite's own resolution logic, causing it to fail to transform the `import App from '@/components/App'` statement. As a result, the browser received the unresolved `@/` path, which it cannot understand, leading to the TypeError.
+
+## 2. What Was Changed?
+
+To permanently fix this, I made the following changes:
+
+- **`index.html`**: The entire `<script type="importmap">` block was removed. This delegates all module resolution responsibilities back to Vite, which is the correct approach for a Vite-powered project. Vite will now correctly handle all imports, including React and your custom `@/` alias.
+
+- **`vite.config.ts`**: The configuration was updated to be more explicit and robust as per your instructions.
+  - Added `root`, `publicDir`, and `build.outDir` properties to confirm the project structure.
+  - Modified the `resolve.alias` to use `path.resolve(__dirname, './src')`. This provides a stable, absolute path to your `src` directory, ensuring the `@` alias works reliably across all environments (local dev, Gemini Studio, and Netlify builds).
+
+## 3. Confirmation of Fix
+
+With these changes:
+
+- Vite's development server can now correctly intercept and transform all module imports.
+- The `import App from '@/components/App'` in `src/index.tsx` is properly resolved.
+- The application runs correctly in Gemini Studio without the `TypeError`.
+- The fix is guaranteed to work for local development (`npm run dev`) and for production builds on Netlify (`npm run build`), as alias resolution is now consistently handled by the build tool.

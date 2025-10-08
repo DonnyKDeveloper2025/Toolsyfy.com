@@ -1,0 +1,42 @@
+<footer class="bg-secondary text-foreground pt-12 pb-8 border-t border-border">
+    <div class="container mx-auto px-6">
+      
+      <!-- --- Author Card (content populated by JS) --- -->
+      <div id="author-card-container" class="bg-card rounded-2xl shadow-xl mx-auto p-6 relative max-w-2xl border-2 border-brand-primary">
+          <div class="flex flex-col sm:flex-row items-center text-center sm:text-left gap-8">
+              <div class="flex-shrink-0">
+                  <img id="author-img" src="" alt="Photo of the creator" class="w-32 h-32 rounded-full object-cover shadow-lg border-4 border-card ring-4 ring-brand-primary" loading="lazy" decoding="async">
+              </div>
+              <div>
+                  <p class="text-sm font-bold text-brand-primary uppercase tracking-widest">Created by</p>
+                  <h2 id="author-name" class="text-3xl sm:text-4xl font-black text-foreground my-1 tracking-tighter"></h2>
+                  <div id="author-bio" class="text-base sm:text-lg text-muted mt-2 space-y-1"></div>
+                  <div class="mt-6 flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-6">
+                      <div class="flex items-center space-x-4">
+                          <h3 class="text-sm font-semibold text-muted">Follow Me:</h3>
+                          <a id="author-twitter" href="#" target="_blank" rel="noopener noreferrer" aria-label="Follow on Twitter" class="text-muted hover:text-brand-primary"><i data-lucide="twitter" class="w-6 h-6"></i></a>
+                          <a id="author-github" href="#" target="_blank" rel="noopener noreferrer" aria-label="Follow on GitHub" class="text-muted hover:text-brand-primary"><i data-lucide="github" class="w-6 h-6"></i></a>
+                      </div>
+                      <div class="h-6 w-px bg-border hidden sm:block"></div>
+                      <a id="author-bmac" href="#" target="_blank" rel="noopener noreferrer" class="inline-block transition-transform hover:scale-105">
+                          <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" class="h-12">
+                      </a>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="text-center text-sm mt-12">
+        <div class="mb-6 w-full max-w-xs mx-auto border-t border-border"></div>
+        <div class="flex justify-center items-center flex-wrap gap-x-6 gap-y-2 text-muted">
+            <button data-modal-trigger="about" class="hover:text-brand-primary transition-colors">About Us</button>
+            <button data-modal-trigger="contact" class="hover:text-brand-primary transition-colors">Contact</button>
+            <button data-modal-trigger="privacy" class="hover:text-brand-primary transition-colors">Privacy Policy</button>
+            <button data-modal-trigger="terms" class="hover:text-brand-primary transition-colors">Terms of Service</button>
+            <button data-modal-trigger="disclaimer" class="hover:text-brand-primary transition-colors">Disclaimer</button>
+            <button data-modal-trigger="suggestion" class="hover:text-brand-primary transition-colors">Suggest a Tool</button>
+        </div>
+        <p id="footer-text-placeholder" class="mt-6 text-muted"></p>
+      </div>
+    </div>
+</footer>

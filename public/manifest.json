@@ -1,0 +1,17 @@
+{
+  "name": "Toolsyfy - The Ultimate Tool Hub",
+  "short_name": "Toolsyfy",
+  "description": "A curated directory of 539 tools, no-backend online tools for social media, content creation, web development, productivity, and more from Toolsyfy.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F1724",
+  "theme_color": "#00D1FF",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230F1724'/%3E%3Cg transform='scale(3.8) translate(2, 2)'%3E%3Cpath d='M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4' fill='none' stroke='%2300D1FF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3C/svg%3E",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

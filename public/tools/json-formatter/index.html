@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JSON Formatter & Validator - Toolsyfy</title>
+  <meta name="description" content="Format, validate, and beautify your JSON data instantly with our free online tool. Copy, paste, and clean up your JSON for easy reading and debugging." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+<body style="visibility: hidden;">
+  <div id="site-header" data-shared="universal-header.html"></div>
+  <div id="site-toolbar" data-shared="universal-toolbar.html"></div>
+
+  <main id="tool-root" class="min-h-screen flex flex-col items-center p-4 sm:p-6 md:p-8">
+        <div class="w-full max-w-4xl mx-auto">
+            <div class="text-center mb-8">
+                 <h1 id="tool-title" class="text-3xl sm:text-4xl font-bold text-foreground"></h1>
+                 <p id="tool-description" class="text-lg text-muted mt-2"></p>
+            </div>
+
+            <div class="bg-card shadow-lg rounded-xl p-6 sm:p-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="json-input" class="block text-sm font-medium text-muted mb-1">JSON Input</label>
+                        <textarea id="json-input" rows="15" class="w-full p-2 border border-border rounded-md focus:ring-brand-primary focus:border-brand-primary bg-background font-mono text-sm" placeholder='{"key": "value"}'></textarea>
+                    </div>
+                    <div>
+                        <label for="json-output" class="block text-sm font-medium text-muted mb-1">Formatted Output</label>
+                        <textarea id="json-output" rows="15" readonly class="w-full p-2 border border-border rounded-md bg-secondary font-mono text-sm"></textarea>
+                    </div>
+                </div>
+                <div class="mt-4 flex flex-wrap gap-2">
+                    <button id="format-btn" class="flex-1 bg-brand-primary text-white font-bold py-2 px-4 rounded-md hover:bg-brand-secondary">Format / Validate</button>
+                    <button id="minify-btn" class="flex-1 bg-slate-600 text-white font-bold py-2 px-4 rounded-md hover:bg-slate-700">Minify</button>
+                    <button id="copy-btn" class="flex-1 bg-secondary text-foreground font-bold py-2 px-4 rounded-md hover:bg-secondary-hover">Copy Output</button>
+                </div>
+                <div id="status-message" class="mt-2 text-sm text-center h-5"></div>
+            </div>
+        </div>
+    </main>
+  
+  <div id="site-footer" data-shared="universal-footer.html"></div>
+  
+  <script src="../shared/shared-injector.js" defer></script>
+  <script src="./tool.js" defer></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', async () => {
+      if (window.__SHARED_INJECTED__) await window.__SHARED_INJECTED__;
+      if (typeof initTool === 'function') {
+        initTool();
+      } else {
+        console.error('Tool initialization function (initTool) not found in tool.js');
+      }
+    });
+  </script>
+</body>
+</html>

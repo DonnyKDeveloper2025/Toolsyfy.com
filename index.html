@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toolsyfy - The Ultimate Tool Hub</title>
+    <meta name="description" content="A curated directory of 539 tools, no-backend online tools for social media, content creation, web development, productivity, and more from Toolsyfy." />
+    <meta name="keywords" content="" />
+    <link rel="canonical" href="https://www.toolsyfy.com/" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link id="favicon" rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300D1FF' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4' /%3E%3C/svg%3E">
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#0B1220">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.toolsyfy.com/">
+    <meta property="og:title" content="Toolsyfy - The Ultimate Tool Hub">
+    <meta property="og:description" content="A curated directory of 539 tools, no-backend online tools for social media, content creation, web development, productivity, and more from Toolsyfy.">
+    <meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 630'%3E%3Crect width='1200' height='630' fill='%2300D1FF'/%3E%3Ctext x='50%25' y='50%25' font-family='sans-serif' font-size='80' fill='%230B1220' text-anchor='middle' dominant-baseline='middle'%3EToolsyfy%3C/text%3E%3C/svg%3E">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.toolsyfy.com/">
+    <meta property="twitter:title" content="Toolsyfy - The Ultimate Tool Hub">
+    <meta property="twitter:description" content="A curated directory of 539 tools, no-backend online tools for social media, content creation, web development, productivity, and more from Toolsyfy.">
+    <meta property="twitter:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 630'%3E%3Crect width='1200' height='630' fill='%2300D1FF'/%3E%3Ctext x='50%25' y='50%25' font-family='sans-serif' font-size='80' fill='%230B1220' text-anchor='middle' dominant-baseline='middle'%3EToolsyfy%3C/text%3E%3C/svg%3E">
+    
+    <!-- Preconnect to critical origins -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://www.gstatic.com">
+    <link rel="preconnect" href="https://rsms.me">
+    <link rel="preconnect" href="https://esm.sh">
+    
+    <!-- Non-blocking font loading -->
+    <link rel="preload" href="https://rsms.me/inter/inter.css" as="style">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://rsms.me/inter/inter.css"></noscript>
+    
+    <link rel="stylesheet" href="./styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // Unified Tailwind config to use centralized CSS variables
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ['Inter', 'sans-serif'] },
+            colors: {
+              background: 'var(--background)',
+              foreground: 'var(--foreground)',
+              muted: 'var(--muted)',
+              card: 'var(--card)',
+              border: 'var(--border)',
+              'brand-primary': 'var(--color-primary)',
+              'brand-secondary': 'var(--color-primary-dark)',
+              header: 'var(--header-bg)',
+              secondary: {
+                DEFAULT: 'var(--secondary-bg)',
+                hover: 'var(--secondary-hover)'
+              },
+            }
+          }
+        }
+      }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js" crossorigin="anonymous" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js" crossorigin="anonymous" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js" crossorigin="anonymous" defer></script>
+
+    <script defer>
+      // Default Firebase config (can be overridden by admin settings in localStorage)
+      let firebaseConfig = {
+        apiKey: "YOUR_API_KEY",
+        authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+        projectId: "YOUR_PROJECT_ID",
+        storageBucket: "YOUR_PROJECT_ID.appspot.com",
+        messagingSenderId: "YOUR_SENDER_ID",
+        appId: "YOUR_APP_ID"
+      };
+      
+      try {
+        // Attempt to load and parse config from localStorage set by the admin panel
+        const storedConfig = localStorage.getItem('toolsyfy_firebase_config');
+        if (storedConfig) {
+          const parsedConfig = JSON.parse(storedConfig);
+          // Basic validation to ensure it's not empty/malformed
+          if (parsedConfig && parsedConfig.apiKey && parsedConfig.apiKey !== "YOUR_API_KEY") {
+            firebaseConfig = parsedConfig;
+          }
+        }
+      } catch (e) {
+        console.error("Could not load Firebase config from localStorage.", e);
+      }
+
+      // Initialize Firebase if the config is valid
+      // The script is deferred, so firebase object will be available when this runs.
+      if (typeof firebase !== 'undefined' && firebaseConfig.apiKey !== "YOUR_API_KEY") {
+        firebase.initializeApp(firebaseConfig);
+      } else {
+        console.warn("Firebase config is not set. Authentication features will be disabled.");
+      }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": "https://www.toolsyfy.com/",
+      "name": "Toolsyfy - The Ultimate Tool Hub",
+      "description": "A curated directory of 539 tools, no-backend online tools for social media, content creation, web development, productivity, and more from Toolsyfy."
+    }
+    </script>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.22.0",
+    "vite": "https://aistudiocdn.com/vite@^7.1.9",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.0.4",
+    "url": "https://aistudiocdn.com/url@^0.11.4",
+    "path": "https://aistudiocdn.com/path@^0.12.7",
+    "@netlify/functions": "https://aistudiocdn.com/@netlify/functions@^4.2.7",
+    "fuse.js": "https://aistudiocdn.com/fuse.js@^7.1.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-background text-foreground">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script>
+      const supportsModules = 'noModule' in HTMLScriptElement.prototype;
+      if (!supportsModules) {
+        document.getElementById('root').innerHTML = 
+          '<div style="padding: 2rem; text-align: center; font-family: sans-serif; color: var(--foreground);">' +
+          '<h2>Browser Not Supported</h2>' +
+          '<p>Your browser is out of date and does not support modern web features. Please update to the latest version of Chrome, Firefox, Safari, or Edge to use this site.</p>' +
+          '</div>';
+      }
+    </script>
+    <script type="module" src="/src/index.tsx"></script>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

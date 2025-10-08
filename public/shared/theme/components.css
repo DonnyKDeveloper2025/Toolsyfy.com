@@ -1,0 +1,38 @@
+/* /public/tools/shared/theme/components.css */
+/* Defines consistent styles for core components, layout, and typography. */
+
+/* --- Base Layout & Typography --- */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base styles for Markdown/prose content */
+.prose {
+  color: var(--foreground);
+}
+.prose a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+.prose a:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+.prose h1, .prose h2, .prose h3 {
+  color: var(--foreground);
+}
+.prose strong {
+  color: var(--foreground);
+}
+
+/* --- Unified Modal Styles --- */
+.modal-overlay {
+  background-color: var(--overlay-color);
+}
+.bg-overlay {
+  background-color: var(--overlay-color);
+}

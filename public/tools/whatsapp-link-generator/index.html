@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WhatsApp Click to Chat Link Generator - Toolsyfy</title>
+  <meta name="description" content="Create free WhatsApp 'click to chat' links with pre-filled messages. Our tool generates wa.me links, QR codes, and embeddable buttons instantly." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="stylesheet" href="../../styles.css" />
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+</head>
+<body style="visibility: hidden;">
+  <div id="site-header" data-shared="universal-header.html"></div>
+  <div id="site-toolbar" data-shared="universal-toolbar.html"></div>
+
+  <main id="tool-root" class="min-h-screen flex flex-col items-center p-4 sm:p-6 md:p-8">
+    <div class="w-full max-w-2xl mx-auto">
+        <div class="text-center mb-8">
+            <h1 id="tool-title" class="text-3xl sm:text-4xl font-bold text-foreground"></h1>
+            <p id="tool-description" class="text-lg text-muted mt-2"></p>
+        </div>
+        <div class="bg-card shadow-lg rounded-xl p-6 sm:p-8 space-y-4">
+            <div>
+                <label for="phone-number" class="block text-sm font-medium text-muted mb-1">WhatsApp Phone Number</label>
+                <input type="tel" id="phone-number" class="w-full p-2 border border-border rounded-md focus:ring-brand-primary focus:border-brand-primary bg-background" placeholder="e.g., 15551234567 (with country code)">
+            </div>
+            <div>
+                <label for="prefilled-message" class="block text-sm font-medium text-muted mb-1">Pre-filled Message (Optional)</label>
+                <textarea id="prefilled-message" rows="3" class="w-full p-2 border border-border rounded-md focus:ring-brand-primary focus:border-brand-primary bg-background" placeholder="e.g., Hello, I'm interested in your product."></textarea>
+            </div>
+            <button id="generate-link-btn" class="w-full bg-brand-primary text-white font-bold py-2.5 px-4 rounded-md hover:bg-brand-secondary">Generate Link</button>
+            
+            <div id="output-section" class="pt-4 border-t border-border space-y-4 hidden">
+                <div>
+                    <label class="block text-sm font-medium text-muted mb-1">Generated Link</label>
+                    <div class="relative">
+                        <input id="generated-link" type="text" readonly class="w-full p-2 pr-10 border border-border rounded-md bg-secondary">
+                        <button id="copy-link-btn" class="absolute top-1/2 right-2 -translate-y-1/2 p-1.5 rounded-md hover:bg-secondary-hover" title="Copy link"><i data-lucide="copy" class="h-4 w-4"></i></button>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
+                    <div class="md:col-span-1">
+                        <label class="block text-sm font-medium text-muted mb-1">QR Code</label>
+                        <div id="qr-code-container" class="p-2 bg-white rounded-md inline-block"></div>
+                    </div>
+                    <div class="md:col-span-2">
+                         <label class="block text-sm font-medium text-muted mb-1">Embeddable Button Code</label>
+                         <div class="relative">
+                            <textarea id="button-code" readonly class="w-full p-2 pr-10 border border-border rounded-md bg-secondary font-mono text-xs resize-none"></textarea>
+                            <button id="copy-button-code-btn" class="absolute top-2 right-2 p-1.5 rounded-md hover:bg-secondary-hover" title="Copy button code"><i data-lucide="copy" class="h-4 w-4"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </main>
+  
+  <div id="site-footer" data-shared="universal-footer.html"></div>
+  
+  <script src="../shared/shared-injector.js" defer></script>
+  <script src="./tool.js" defer></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', async () => {
+      if (window.__SHARED_INJECTED__) await window.__SHARED_INJECTED__;
+      if (typeof initTool === 'function') {
+        initTool();
+      } else {
+        console.error('Tool initialization function (initTool) not found in tool.js');
+      }
+    });
+  </script>
+</body>
+</html>

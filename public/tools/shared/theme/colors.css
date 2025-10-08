@@ -1,0 +1,20 @@
+/* Black default theme. Do not add dark-mode toggles. Use these variables across site and tools. */
+:root {
+  --background: #0B1220; /* page background - deep black/blue */
+  --foreground: #E6EEF6; /* main text */
+  --muted: #9AA6B2;      /* muted text */
+  --card: #0F1724;        /* card/background */
+  --border: #1e293b;     /* slate-800, as a dark border */
+  
+  /* Brand Colors */
+  --color-primary: #00D1FF;    /* accent color */
+  --color-primary-dark: #00b8e0; /* slightly darker accent for hover */
+  
+  /* Component Backgrounds */
+  --secondary-bg: #1e293b; /* slate-800, for secondary elements */
+  --secondary-hover: #334155; /* slate-700, for hover */
+  --header-bg: #0F1724; /* card color for header */
+
+  /* Overlay for modals */
+  --overlay-color: rgba(11, 18, 32, 0.8); /* semi-transparent version of background */
+}

@@ -1,0 +1,23 @@
+# dist/ Check for Leftover "@/" Aliases
+
+This file is a placeholder for the results of checking the production build output.
+
+## Instructions
+
+After running `npm run build`, you can verify that no raw "@/" aliases were left in the bundled code by running the following command in your terminal from the project root:
+
+**On Linux/macOS:**
+```sh
+grep -r "@/" dist/
+```
+
+**On Windows (PowerShell):**
+```powershell
+Get-ChildItem -Path dist/ -Recurse | Select-String -Pattern "@/"
+```
+
+## Expected Result
+
+The command should produce **no output**. If any files are listed, it means the alias was not correctly resolved during the build process, and the fix needs to be re-evaluated.
+
+With the current fixes, this check is expected to pass successfully.

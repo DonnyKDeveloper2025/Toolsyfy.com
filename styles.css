@@ -1,0 +1,28 @@
+/* --- Global Theme System --- */
+@import url('./public/tools/shared/theme/colors.css');
+@import url('./public/tools/shared/theme/components.css');
+
+/* --- Animations & Effects --- */
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.4) rotate(10deg); }
+  100% { transform: scale(1); }
+}
+
+.animate-pop {
+  animation: pop 0.3s ease-out;
+}
+
+button, a[role="button"], input[type="button"], input[type="submit"] {
+  transition: transform 0.1s ease-out;
+}
+
+button:active, a[role="button"]:active, input[type="button"]:active, input[type="submit"]:active {
+  transform: scale(0.95);
+}
+
+.highlight-tool {
+  transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
+  box-shadow: 0 0 0 3px var(--color-primary);
+  border-color: var(--color-primary);
+}

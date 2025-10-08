@@ -1,0 +1,28 @@
+{
+  "name": "toolsyfy-app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "generate-tool": "node scripts/generate-tool-folder.js",
+    "validate-tools": "node scripts/validate-tools.js"
+  },
+  "dependencies": {
+    "@google/genai": "^1.22.0",
+    "@netlify/functions": "^4.2.7",
+    "@tanstack/react-virtual": "^3.13.12",
+    "fuse.js": "^7.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.12",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.11"
+  }
+}
