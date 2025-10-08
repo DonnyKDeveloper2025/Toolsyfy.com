@@ -90,28 +90,37 @@ export default async (req: Request, context: Context): Promise<Response> => {
         model: 'gemini-2.5-flash',
         contents,
         config: modelConfig,
-        safetySettings,
     });
     
-    if (!response.text && response.candidates && response.candidates[0].finishReason === 'SAFETY') {
-       return new Response(JSON.stringify({ error: 'Response blocked due to safety concerns. Please modify your prompt.' }), { status: 400, headers: corsHeaders });
+    // Normalize response text: prefer response.text, otherwise try common candidate fallbacks.
+    const firstCandidate = response.candidates?.[0] as unknown as Record<string, any> | undefined;
+    const rawText: string = String(
+      response.text ??
+        firstCandidate?.content ??
+        firstCandidate?.text ??
+        firstCandidate?.output?.[0]?.content ??
+        ''
+    ).trim();
+
+    if (!rawText && response.candidates?.[0]?.finishReason === 'SAFETY') {
+      return new Response(JSON.stringify({ error: 'Response blocked due to safety concerns. Please modify your prompt.' }), { status: 400, headers: corsHeaders });
     }
     
     // --- 5. Smart Response Formatting ---
     if (modelConfig?.responseMimeType === "application/json") {
       try {
-        const jsonText = response.text.trim().replace(/^```json/, '').replace(/```$/, '').trim();
+        const jsonText = rawText.replace(/^```json/, '').replace(/```$/, '').trim();
         const jsonResponse = JSON.parse(jsonText);
         return new Response(JSON.stringify(jsonResponse), {
           status: 200,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         });
       } catch (parseError) {
-        console.error("Failed to parse AI JSON response:", parseError, "Raw text:", response.text);
-        return new Response(JSON.stringify({ text: response.text, error: 'Failed to parse JSON on server' }), { status: 200, headers: corsHeaders });
+        console.error("Failed to parse AI JSON response:", parseError, "Raw text:", rawText);
+        return new Response(JSON.stringify({ text: rawText, error: 'Failed to parse JSON on server' }), { status: 200, headers: corsHeaders });
       }
     } else {
-      return new Response(JSON.stringify({ text: response.text }), {
+      return new Response(JSON.stringify({ text: rawText }), {
         status: 200,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
